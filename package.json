@@ -1,6 +1,6 @@
 {
   "name": "@daltontan/postcss-import-json",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Imports a JSON file and generates CSS custom properties (variables)",
   "repository": "https://github.com/AgentCosmic/postcss-import-json/",
   "main": "index.js",

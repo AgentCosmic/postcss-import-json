@@ -3,19 +3,11 @@ const path = require('path')
 module.exports = (opts = {}) => {
 	return {
 		postcssPlugin: 'postcss-import-json',
-		Once(root, api) {
-			root.walkAtRules(atRule => {
-				if (atRule.name === 'import-json') {
-					plugin(opts, atRule, atRule.params.slice(1, -1), api)
-				}
-			})
-		},
-		// cssnano will delete it if we use AtRule
-		// AtRule: {
-		// 	'import-json': (atRule, api) => {
-		// 		plugin(opts, atRule, atRule.params, api)
-		// 	}
-		// }
+		AtRule: {
+			'import-json': (atRule, api) => {
+				plugin(opts, atRule, atRule.params.slice(1, -1), api)
+			}
+		}
 	}
 }
 module.exports.postcss = true
