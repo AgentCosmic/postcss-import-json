@@ -15,17 +15,17 @@ module.exports.postcss = true
 function plugin(opts, placeholder, src, { Declaration }) {
 	src = path.join(path.dirname(placeholder.source.input.file), src)
 	const vars = require(src)
-	for (const decl of walk(vars, [], Declaration, opts.map)) {
+	for (const decl of walk(vars, [], Declaration, opts)) {
 		placeholder.after(decl)
 	}
 	placeholder.remove()
 }
 
-function walk(tree, selectors, Declaration, map) {
+function walk(tree, selectors, Declaration, { prefix = '--', map }) {
 	let output = []
 	for (const key in tree) {
 		const s = [...selectors, key]
-		const name = '--' + s.join('-')
+		const name = prefix + s.join('-')
 		let v = tree[key]
 		if (map) {
 			v = map(s, v)
