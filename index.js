@@ -21,7 +21,7 @@ function plugin(opts, placeholder, src, { Declaration }) {
 	placeholder.remove()
 }
 
-function walk(tree, selectors, Declaration, { prefix = '--', map }) {
+function walk(tree, selectors, Declaration, { prefix = '--', map } = {}) {
 	let output = []
 	for (const key in tree) {
 		const s = [...selectors, key]
