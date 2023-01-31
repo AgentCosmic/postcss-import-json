@@ -62,7 +62,7 @@ module.exports = {
 
 module.exports = {
   plugins: [
-    require("@daltontan/postcss-import-json", {
+    require("@daltontan/postcss-import-json")({
       prefix: "", // :root { my-color: red; }
     }),
   ],
